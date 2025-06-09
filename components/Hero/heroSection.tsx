@@ -13,25 +13,21 @@ const HeroSection: FC = () => {
           AI-Powered
           <span className="text-indigo-600"> Image to Prompt</span>
         </h1>
-        <p className="text-gray-500 max-w-xl mx-auto leading-relaxed">
-          Turn your images into detailed and descriptive text prompts with our
-          powerful AI-powered tool.
+        <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
+          将图片转换为专业的AI绘画提示词，支持 Midjourney、Stable Diffusion 和 FLUX 等主流AI绘画工具
         </p>
+        <div className="flex justify-center space-x-4 mt-6">
+          <div className="flex items-center space-x-2 px-4 py-2 bg-purple-100 rounded-full">
+            <span className="text-purple-600 font-medium">🎨 Midjourney</span>
+          </div>
+          <div className="flex items-center space-x-2 px-4 py-2 bg-blue-100 rounded-full">
+            <span className="text-blue-600 font-medium">⚡ Stable Diffusion</span>
+          </div>
+          <div className="flex items-center space-x-2 px-4 py-2 bg-green-100 rounded-full">
+            <span className="text-green-600 font-medium">🌟 FLUX</span>
+          </div>
+        </div>
       </div>
-      {/* <div className="mt-12 justify-center items-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex">
-        <a
-          href="#"
-          className="px-10 py-3.5 w-full bg-indigo-600 text-white text-center rounded-md shadow-md block sm:w-auto"
-        >
-          Get started
-        </a>
-        <a
-          href="#"
-          className="px-10 py-3.5 w-full text-gray-500 text-center border rounded-md duration-300 hover:text-indigo-600 hover:shadow block sm:w-auto"
-        >
-          Try it out
-        </a>
-      </div> */}
     </section>
   );
 };

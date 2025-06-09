@@ -6,13 +6,6 @@ export function usePrediction() {
   const [prediction, setPrediction] = useState<any>(null);
   const [error, setError] = useState<any>(null);
 
-  // useEffect(() => {
-  //   console.log("-----------------------------------------")
-  //   console.log("prediction:", prediction)
-  //   console.log("error:", error)
-  //   console.log("-----------------------------------------")
-  // }, [prediction, error])
-
   const handleSubmit = async (params: any) => {
     const response = await fetch("/api/predictions", {
       method: "POST",
@@ -46,15 +39,6 @@ export function usePrediction() {
       console.log({ prediction });
       setPrediction(prediction);
     }
-
-    // await sleep(2000);
-
-    // mock
-    // setPrediction({
-    //   output: `
-
-    //   a painting of a mountain range with a lake in the foreground, a detailed matte painting by RHADS, Artstation, fantasy art, terragen, matte painting, official art`
-    // })
   };
 
   return {
