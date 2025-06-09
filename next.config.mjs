@@ -10,11 +10,15 @@ const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
-    // 完全禁用 SWC 以确保 WebContainer 兼容性
+    // 完全禁用 SWC，使用 Babel
     swcMinify: false,
     experimental: {
         forceSwcTransforms: false,
         esmExternals: false,
+    },
+    // 强制使用 Babel 而不是 SWC
+    compiler: {
+        // 禁用所有 SWC 功能
     },
     // 优化的 webpack 配置
     webpack: (config, { isServer, dev }) => {
@@ -45,8 +49,6 @@ const nextConfig = {
         
         return config;
     },
-    // 输出配置
-    output: 'standalone',
 };
 
 export default nextConfig;
