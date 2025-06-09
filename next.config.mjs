@@ -10,6 +10,11 @@ const nextConfig = {
         // !! 警告 !!
         ignoreBuildErrors: true,
     },
+    // Disable SWC and use Babel instead for WebContainer compatibility
+    swcMinify: false,
+    experimental: {
+        forceSwcTransforms: false,
+    },
 };
 
 export default nextConfig;
