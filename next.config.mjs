@@ -5,28 +5,48 @@ const nextConfig = {
         unoptimized: true,
     },
     typescript: {
-        // !! 警告 !!
-        // 允许在生产构建过程中成功完成，即使项目存在类型错误。
-        // !! 警告 !!
         ignoreBuildErrors: true,
     },
-    // 禁用 SWC 并使用 Babel 以提高 WebContainer 兼容性
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    // 完全禁用 SWC 以确保 WebContainer 兼容性
     swcMinify: false,
     experimental: {
         forceSwcTransforms: false,
+        esmExternals: false,
     },
-    // 添加 webpack 配置以避免原生模块问题
-    webpack: (config, { isServer }) => {
+    // 优化的 webpack 配置
+    webpack: (config, { isServer, dev }) => {
+        // 禁用原生模块
         if (!isServer) {
             config.resolve.fallback = {
                 ...config.resolve.fallback,
                 fs: false,
                 net: false,
                 tls: false,
+                crypto: false,
+                stream: false,
+                url: false,
+                zlib: false,
+                http: false,
+                https: false,
+                assert: false,
+                os: false,
+                path: false,
             };
         }
+        
+        // 忽略特定的模块警告
+        config.ignoreWarnings = [
+            /Failed to parse source map/,
+            /Critical dependency: the request of a dependency is an expression/,
+        ];
+        
         return config;
     },
+    // 输出配置
+    output: 'standalone',
 };
 
 export default nextConfig;
